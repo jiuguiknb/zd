@@ -1,11 +1,16 @@
 # 仓库账本（GitHub Ledger）
 
-一个单文件、纯静态的中文记账工具。网页由 GitHub Pages 托管，账单通过 GitHub Contents API 保存到你指定的仓库 JSON 文件中。
+> 简单记账，清晰复盘。你的数据由你自己掌控。
+
+一个轻量、响应式的个人收支管理网页。无需自建服务器，网页可通过 GitHub Pages 静态托管，账单则由 GitHub Contents API 写入你自己指定的仓库。支持收入支出记录、月度收支趋势、分类统计、搜索、编辑删除，以及 CSV / JSON 备份。
+
+**仓库简介（可用于 GitHub About）：** 轻量开源个人记账工具，支持收支记录、月度趋势、分类统计与 CSV/JSON 备份；静态部署，账单存储在用户自己的 GitHub 仓库。
 
 ## 功能
 
 - 记录收入和支出：金额、日期、分类、账户、备注
 - 本月收入、支出和结余统计
+- Chart.js 驱动的近 6 个月收入、支出与结余趋势图
 - 按月份筛选、按分类/备注/账户搜索
 - 编辑和删除账单
 - 导出 CSV（兼容 Excel）和 JSON 备份
@@ -14,14 +19,14 @@
 
 ## 部署网页
 
-仓库已包含自动部署工作流：`.github/workflows/pages.yml`。每次向 `main` 推送提交后，GitHub Actions 会自动部署网站。
+仓库已包含自动部署工作流：`.github/workflows/pages.yml`。**需要先在 GitHub 仓库设置中启用 Pages**；启用后，每次向 `main` 推送提交，GitHub Actions 会自动部署网站。
 
 首次部署时，请确认仓库允许 Pages 使用 GitHub Actions：
 
 1. 打开仓库 **Settings → Pages**。
 2. 在 **Build and deployment → Source** 中选择 **GitHub Actions**（如果该选项尚未选中）。
 3. 打开 **Actions** 页面，查看 **Deploy GitHub Pages** 工作流。推送工作流后会自动触发；也可以手动运行。
-4. 等待工作流成功，部署地址通常为 `https://jiuguiknb.github.io/zd/`。
+4. 等待 `Deploy GitHub Pages` 工作流成功后，部署地址通常为 `https://jiuguiknb.github.io/zd/`。如果工作流曾因 Pages 未启用而失败，请在启用 Pages 后从 Actions 页面重新运行工作流。
 
 如果仓库是私有仓库，Pages 的可用性取决于 GitHub 账户/组织计划和仓库设置。
 
@@ -34,6 +39,10 @@
 3. Token 的 Repository access 只选择账单数据仓库，Repository permissions 只授予 **Contents: Read and write**。
 4. 打开已部署的网页，在「GitHub 仓库设置」中填写用户名/组织、数据仓库名、分支（通常为 `main`）、数据文件路径（默认 `data/transactions.json`）和 Token。
 5. 点击「连接并读取」。首次使用时，如果数据文件还不存在，应用会以空账本开始；首次保存时创建该文件。
+
+## 开源依赖
+
+- [Chart.js](https://github.com/chartjs/Chart.js)：用于绘制近 6 个月收支趋势图，采用 MIT 许可证，通过 jsDelivr CDN 加载。若 CDN 不可用，趋势图会显示提示，账单记录和导出功能仍可使用。
 
 ## 安全说明
 
