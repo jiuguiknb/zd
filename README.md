@@ -44,6 +44,14 @@
 
 - [Chart.js](https://github.com/chartjs/Chart.js)：用于绘制近 6 个月收支趋势图，采用 MIT 许可证，通过 jsDelivr CDN 加载。若 CDN 不可用，趋势图会显示提示，账单记录和导出功能仍可使用。
 
+### UI 参考与图标
+
+本次页面视觉参考了以下公开开源项目，仅借鉴通用布局和信息层级，没有复制第三方页面代码或图片：
+
+
+- [Lucide](https://github.com/lucide-icons/lucide)：本页面用于品牌标记的内嵌 SVG 图标风格参考 Lucide；ISC 许可证。仅保留独立 SVG 路径，不加载运行时库。
+- [Brisk Budget](https://github.com/BriskBudget/brisk-budget)：参考轻量开源个人财务仪表盘的摘要卡片、趋势图与分类列表层级；MIT 许可证。未复制其实现或素材。
+
 ## 安全说明
 
 - **不要把 Token 写进源码、提交到 Git 仓库或分享给他人。**
