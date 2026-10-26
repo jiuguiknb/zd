@@ -50,7 +50,7 @@
 
 
 - [Lucide](https://github.com/lucide-icons/lucide)：本页面用于品牌标记的内嵌 SVG 图标风格参考 Lucide；ISC 许可证。仅保留独立 SVG 路径，不加载运行时库。
-- [Brisk Budget](https://github.com/BriskBudget/brisk-budget)：参考轻量开源个人财务仪表盘的摘要卡片、趋势图与分类列表层级；MIT 许可证。未复制其实现或素材。
+- [Finance Dashboard UI](https://github.com/Bhuv2001/finance_dashboard)：参考其公开展示的摘要卡片、趋势图和交易列表的信息层级。该仓库未确认到许可证文件，因此仅作视觉研究参考，没有复制其代码或素材。
 
 ## 安全说明
 
