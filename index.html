@@ -10,9 +10,78 @@
 @media(max-width:850px){body{padding:16px 12px 30px}.grid{grid-template-columns:1fr}.grid>div{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.grid>div .card{margin:0 0 14px}.grid>section{margin:0}.grid>div .card:last-child{grid-column:1/-1}}
 @media(max-width:560px){body{padding:10px 9px 24px}header{border-radius:17px;padding:22px 19px 18px}.card{padding:14px;border-radius:14px}.stats{gap:7px}.stat{padding:12px 10px;border-radius:12px}.stat strong{font-size:16px}.stat small{font-size:10px}.grid>div{display:block}.grid>div .card{margin:14px 0}.row{gap:6px}.row input{flex-basis:100%}.row select{flex:1 1 120px}.row button{flex:1 1 auto}.two{grid-template-columns:1fr}.wide{grid-column:auto}.chart-wrap{height:200px}.tablewrap table{min-width:570px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* Dashboard refresh: original ledger logic and control IDs remain intact. */
+:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:#192b25;background:#f5f7f4;--green:#176b4b;--green2:#23815a;--muted:#829087;--line:#e7ece7;--surface:#fff;--shadow:0 12px 30px rgba(20,45,32,.055)}
+body{padding:30px 24px 48px;background:radial-gradient(ellipse at 82% 0,#e6f0e8 0,transparent 25%),#f5f7f4}
+main{max-width:1280px}
+header{min-height:192px;padding:31px 36px 27px;border-radius:25px;background:linear-gradient(115deg,#123a2d 0%,#176346 58%,#2d805c 100%);box-shadow:0 20px 45px rgba(22,76,51,.15)}
+header:before{content:"";position:absolute;right:8%;top:22px;width:360px;height:205px;opacity:.24;background:radial-gradient(ellipse at center,transparent 46%,#d6f0de 47%,transparent 48%),radial-gradient(ellipse at center,transparent 60%,#d6f0de 61%,transparent 62%);transform:rotate(-18deg);pointer-events:none}
+header:after{width:245px;height:245px;right:-84px;top:-125px;box-shadow:0 0 0 34px #ffffff0a,0 0 0 68px #ffffff07}
+h1{display:flex;align-items:center;gap:12px;font-size:30px;letter-spacing:-.045em}
+.brand-icon{width:42px;height:42px;padding:9px;border-radius:13px;background:#ffffff19;box-shadow:inset 0 0 0 1px #ffffff20}
+.brand-label{font-size:10px;font-weight:650;letter-spacing:.16em;color:#c5dfcd;margin-left:3px}
+.sub{font-size:14px;color:#d5e9dc;margin-left:54px}
+.status{position:relative;z-index:1;display:table;margin:20px 0 0 54px;padding:7px 12px;border:1px solid #ffffff24;border-radius:99px;background:#ffffff12;color:#e1f0e5;font-size:11px}
+.notice{display:flex;align-items:center;gap:10px;padding:12px 15px;border:1px solid #eee4c6;border-radius:13px;background:#fffcf2;color:#756239;font-size:11px;box-shadow:0 4px 12px #41320e08}
+.notice:before{content:"";display:block;flex:0 0 20px;height:20px;border-radius:50%;background:#f5e9c8;box-shadow:inset 0 0 0 6px #fff7e0}
+.stats{gap:15px;margin:18px 0}
+.stat{padding:21px 22px 20px;border-radius:18px;box-shadow:0 8px 24px rgba(20,45,32,.045);transition:transform .18s,box-shadow .18s}
+.stat:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(20,45,32,.08)}
+.stat:after{width:104px;height:104px;right:-29px;top:-34px;background:radial-gradient(circle,#eaf4ec 0 44%,#f4f8f4 45% 65%,transparent 66%)}
+.stat small{font-size:11px;letter-spacing:.025em;color:#7d8b82}
+.stat strong{font-size:27px;letter-spacing:-.045em;margin-top:11px}
+.grid{grid-template-columns:minmax(0,1.55fr) minmax(330px,.85fr);gap:18px}
+.card{padding:23px;border-radius:19px;border-color:#e8ede8;box-shadow:0 10px 30px rgba(20,45,32,.045)}
+.card h2{font-size:15px;letter-spacing:-.025em}
+.grid>section.card{padding:24px}
+.grid>section.card>h2{font-size:17px;margin-bottom:18px}
+.grid>section.card>.row{padding:10px;background:#f7f9f7;border:1px solid #edf1ed;border-radius:14px}
+input,select,button{border-color:#e1e8e1;border-radius:10px;min-height:41px}
+button{color:#4a5d51;background:#fff;box-shadow:0 2px 4px #122a1b05}
+button:hover{border-color:#a9c5b1;background:#f5f9f6}
+button.primary{background:linear-gradient(135deg,#1a704e,#23815a);border-color:#1c714f;box-shadow:0 4px 10px #176b4b20;color:white}
+button.primary:hover{background:#145c40}
+#sync{color:#176b4b;background:#eaf4ed;border-color:#d9e9dd}
+#exportCsv,#exportJson{font-size:11px}
+.tablewrap{margin-top:14px;border:1px solid #edf1ed;border-radius:14px}
+table{border-collapse:separate;border-spacing:0}
+thead{background:#f7f9f7}
+th{padding:12px 10px;color:#87948b;font-size:10px;letter-spacing:.06em}
+td{padding:13px 10px;font-size:11px}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#f8fbf8}
+td button{background:#fff;padding:5px 8px}
+.pill{padding:5px 9px;font-weight:650;letter-spacing:.02em}
+.chart-wrap{height:242px;padding:4px 6px}
+.section-head{margin:22px 0 13px}
+.section-head h2{font-size:14px}
+.tag{font-size:10px;font-weight:600;color:#567d63;background:#edf5ef;padding:6px 10px}
+.bars{gap:14px;padding:4px 3px}
+.bar{grid-template-columns:72px minmax(40px,1fr) auto;gap:12px;font-size:11px;color:#55655b}
+.bar b{font-size:11px;color:#304138;font-variant-numeric:tabular-nums}
+.track{height:8px;background:#eff3ef}
+.fill{background:linear-gradient(90deg,#9dcaab,#31825d)}
+.grid>div .card{margin-top:0}
+#formTitle{font-size:17px;margin-bottom:17px}
+#entry>.row:first-child{display:inline-flex;padding:4px;border-radius:12px;background:#f1f5f1;gap:4px}
+#entry>.row:first-child button{border-color:transparent;background:transparent;box-shadow:none;padding-inline:18px}
+#entry>.row:first-child button.primary{color:#fff;background:#176b4b;box-shadow:0 2px 7px #176b4b24}
+label{font-size:11px;font-weight:600;color:#6c7c72;margin:14px 0 7px}
+#save{min-width:150px}
+.hint{font-size:10px;color:#8a968e}
+details summary{list-style:none;display:flex;justify-content:space-between;align-items:center;font-size:14px;color:#263a2e}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:"⌄";font-size:17px;color:#819087}
+details[open] summary{margin-bottom:12px}
+.grid>div .card:last-child{background:linear-gradient(180deg,#fff,#fcfdfc)}
+footer,.hint[style*="text-align"]{margin-top:18px;color:#929d95}
+@media(max-width:850px){body{padding:18px 14px 32px}.grid{grid-template-columns:1fr}.grid>div{grid-template-columns:1fr 1fr;gap:0 14px}.grid>div .card{margin-bottom:14px}}
+@media(max-width:560px){body{padding:10px 9px 24px}header{min-height:170px;border-radius:19px;padding:23px 19px 18px}h1{font-size:25px;gap:9px}.brand-icon{width:36px;height:36px;padding:7px}.brand-label{font-size:8px}.sub,.status{margin-left:45px}.status{margin-top:15px}header:before{right:-35px;opacity:.14}.card,.grid>section.card{padding:16px;border-radius:15px}.stats{gap:7px}.stat{padding:13px 10px}.stat strong{font-size:17px;margin-top:8px}.stat small{font-size:10px}.grid>div{display:block}.grid>div .card{margin:14px 0}.grid>div .card:last-child{margin-bottom:14px}.row{gap:6px}.row input{flex-basis:100%}.row select{flex:1 1 120px}.row button{flex:1 1 auto}.two{grid-template-columns:1fr}.wide{grid-column:auto}.chart-wrap{height:205px}.notice{align-items:flex-start}.tablewrap table{min-width:570px}#sync,#exportCsv,#exportJson{flex:1 1 auto}}
+
 </style></head>
 <body><main>
-<header><h1>仓库账本 <span style="font-size:12px;font-weight:500;letter-spacing:0;opacity:.8">GITHUB LEDGER</span></h1><div class="sub">简单记账，清晰复盘。你的数据由你自己掌控。</div><p class="status" id="status">尚未连接仓库</p></header>
+<header><h1><svg class="brand-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18.5V10l8-5 8 5v8.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 18v-5h8v5M8 10h.01M12 10h.01M16 10h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>仓库账本 <span class="brand-label">GITHUB LEDGER</span></h1><div class="sub">简单记账，清晰复盘。你的数据由你自己掌控。</div><p class="status" id="status">尚未连接仓库</p></header>
 <div class="notice">安全提示：建议将账单保存到独立的私有 GitHub 仓库。Token 只授予该仓库的 Contents 读写权限，请勿在公共设备上使用。</div>
 <div class="stats"><div class="stat"><small>本月收入</small><strong class="in" id="income">¥0.00</strong></div><div class="stat"><small>本月支出</small><strong class="out" id="expense">¥0.00</strong></div><div class="stat"><small>本月结余</small><strong id="balance">¥0.00</strong></div></div>
 <div class="grid"><section class="card"><h2>账单记录</h2><div class="row"><input id="search" placeholder="搜索分类、备注、账户"><select id="month"><option value="all">所有月份</option></select><button id="sync">同步</button><button id="exportCsv">导出 CSV</button><button id="exportJson">备份 JSON</button></div><div class="tablewrap"><table><thead><tr><th>日期</th><th>类型 / 分类</th><th>备注 / 账户</th><th class="amount">金额</th><th>操作</th></tr></thead><tbody id="rows"></tbody></table><div class="empty" id="empty">请先连接仓库，或添加账单。</div></div><hr style="border:0;border-top:1px solid #edf1ed;margin:20px 0"><div class="section-head"><h2>近 6 个月收支趋势</h2><span class="tag">月度概览</span></div><div class="chart-wrap"><canvas id="trendChart" aria-label="近六个月收入、支出和结余趋势图" role="img"></canvas><div class="empty" id="chartFallback" hidden>趋势图需要联网加载 Chart.js；账单记录和导出功能仍可正常使用。</div></div><hr style="border:0;border-top:1px solid #edf1ed;margin:20px 0"><div class="section-head"><h2>本月支出分类</h2><span class="tag">支出构成</span></div><div class="bars" id="bars"></div></section>
