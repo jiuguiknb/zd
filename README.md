@@ -13,11 +13,16 @@
 
 ## 部署网页
 
-1. 将本仓库的 `index.html` 放在仓库根目录。
-2. 打开仓库的 **Settings → Pages**。
-3. 在 **Build and deployment** 中选择 **Deploy from a branch**。
-4. 选择 `main` 分支和 `/(root)` 目录并保存。
-5. 等待 GitHub Pages 发布，然后打开页面链接。
+仓库已包含自动部署工作流：`.github/workflows/pages.yml`。每次向 `main` 推送提交后，GitHub Actions 会自动部署网站。
+
+首次部署时，请确认仓库允许 Pages 使用 GitHub Actions：
+
+1. 打开仓库 **Settings → Pages**。
+2. 在 **Build and deployment → Source** 中选择 **GitHub Actions**（如果该选项尚未选中）。
+3. 打开 **Actions** 页面，查看 **Deploy GitHub Pages** 工作流。推送工作流后会自动触发；也可以手动运行。
+4. 等待工作流成功，部署地址通常为 `https://jiuguiknb.github.io/zd/`。
+
+如果仓库是私有仓库，Pages 的可用性取决于 GitHub 账户/组织计划和仓库设置。
 
 ## 配置账单存储
 
