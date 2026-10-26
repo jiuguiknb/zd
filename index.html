@@ -20,7 +20,7 @@
 <section class="card"><details open><summary><b>GitHub 仓库设置</b></summary><div class="two"><div><label for="owner">用户名 / 组织</label><input id="owner" autocomplete="off" placeholder="your-username"></div><div><label for="repo">数据仓库名</label><input id="repo" autocomplete="off" placeholder="my-ledger"></div><div><label for="branch">分支</label><input id="branch" value="main"></div><div><label for="path">数据文件</label><input id="path" value="data/transactions.json"></div><div class="wide"><label for="token">Fine-grained Personal Access Token</label><input id="token" type="password" autocomplete="off" placeholder="github_pat_…"></div></div><p class="hint">Token 仅保存在当前标签页的 sessionStorage，关闭标签页后清除。只给专用数据仓库 Contents: Read and write 权限。</p><div class="row"><button class="primary" id="connect">连接并读取</button><button id="clear">清除连接</button></div></details></section></div></div>
 <p class="hint" style="text-align:center">仓库账本 · 静态网页 · 数据由 GitHub Contents API 读写 · 金额单位：人民币</p>
 </main>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id), KEY='github-ledger-settings-v1';
